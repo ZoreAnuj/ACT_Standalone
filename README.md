@@ -18,7 +18,7 @@ A standalone C++ implementation for running ACT (Action Chunking with Transforme
 
 1. **WSL2** installed on Windows
 2. **VcXsrv** X Server for Windows (download from [SourceForge](https://sourceforge.net/projects/vcxsrv/))
-3. **Trained ACT model** checkpoint directory
+3. **Trained ACT model** checkpoint directory (download from Hugging Face or use included)
 4. **Dataset** with videos and stats.json
 
 ### Step 1: Setup VcXsrv (Windows)
@@ -30,9 +30,23 @@ A standalone C++ implementation for running ACT (Action Chunking with Transforme
    - **Start no client**
    - ✅ **Check "Disable access control"** (important!)
 
-### Step 2: Export Model to TorchScript (Optional)
+### Step 2: Download Checkpoint (If not included)
 
-**Note:** This package includes a pre-trained checkpoint with `model_torchscript.pt` already exported! You can skip this step if using the included checkpoint.
+**Option A: Download from Hugging Face (Recommended)**
+
+```bash
+# Clone the checkpoint repository
+git clone https://huggingface.co/zero7101/ACT_Piper checkpoint
+
+# Or using huggingface-cli
+huggingface-cli download zero7101/ACT_Piper --local-dir checkpoint
+```
+
+**Option B: Use Included Checkpoint**
+
+This package may include a pre-trained checkpoint in the `checkpoint/` directory. If present, you can skip this step.
+
+**Option C: Export Your Own Model to TorchScript**
 
 If you want to use your own checkpoint, export it to TorchScript:
 
@@ -162,7 +176,11 @@ If you see a clock window on Windows, X Server is working! 🎉
 
 ## 📝 Notes
 
-- **Included checkpoint:** This package includes a pre-trained ACT checkpoint in the `checkpoint/` directory. The TorchScript model (`model_torchscript.pt`) is already exported and ready to use.
+- **Checkpoint download:** The checkpoint is available on Hugging Face at `zero7101/ACT_Piper`. Download it using:
+  ```bash
+  git clone https://huggingface.co/zero7101/ACT_Piper checkpoint
+  ```
+- **Included checkpoint:** This package may include a pre-trained ACT checkpoint in the `checkpoint/` directory. The TorchScript model (`model_torchscript.pt`) is already exported and ready to use.
 - The code uses **WSL path format** (`/mnt/d/...`) by default
 - For **CUDA support**, modify `setup_wsl.sh` to download CUDA version of LibTorch
 - The visualization shows:
