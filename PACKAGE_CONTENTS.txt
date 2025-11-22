@@ -1,0 +1,35 @@
+ACT C++ Inference Standalone Package
+=====================================
+
+This package contains everything needed to run ACT policy inference in C++ on WSL.
+
+Files included:
+---------------
+1. act_inference.cpp          - Main C++ inference code (653 lines)
+2. setup_wsl.sh               - Automated WSL environment setup
+3. compile.sh                 - Compilation script
+4. run_inference.sh           - Runtime script with X Server config
+5. export_to_torchscript.py   - Python script to export PyTorch model
+6. checkpoint/                - Pre-trained ACT model (ready to use!)
+7. README.md                  - Complete documentation
+8. PACKAGE_CONTENTS.txt       - This file
+
+Quick Start:
+------------
+1. Install VcXsrv on Windows (see README.md)
+2. Run: bash setup_wsl.sh
+3. Compile: bash compile.sh
+4. Run: bash run_inference.sh ./checkpoint <dataset_dir>
+
+Note: Checkpoint is included! No need to export model.
+
+Requirements:
+-------------
+- WSL2
+- VcXsrv X Server (Windows)
+- Trained ACT checkpoint
+- Dataset with videos and stats.json
+
+Note: Make scripts executable in WSL:
+  chmod +x *.sh
+
